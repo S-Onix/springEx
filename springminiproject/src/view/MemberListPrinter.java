@@ -18,7 +18,7 @@ public class MemberListPrinter {
 		this.printer = printer;
 	}
 	
-	public void printMemberInfo(String email) {
+	public void printAllMemberInfo(String email) {
 		ArrayList<Member> members = memberDao.selectAll();
 		if(members == null) {
 			System.out.println("데이터 없음");
