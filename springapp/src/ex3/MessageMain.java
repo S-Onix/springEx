@@ -8,6 +8,9 @@ public class MessageMain {
 		ApplicationContext factory = new FileSystemXmlApplicationContext("beans.xml");
 		MessageBean bean = factory.getBean("messageBean", MessageBeanEn.class);
 		bean.sayHello("spring");
+		
+		MessageBean beanKr = factory.getBean("messageBeanKr", MessageBeanKr.class);
+		beanKr.sayHello("½ºÇÁ¸µ");
 	}
 	
 }
