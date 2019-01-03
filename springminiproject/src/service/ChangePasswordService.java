@@ -1,5 +1,7 @@
 package service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import dao.MemberDao;
 import miniexception.MemberNotFoundException;
 import vo.Member;
@@ -7,6 +9,7 @@ import vo.Member;
 public class ChangePasswordService {
 	private MemberDao memberDao;
 	
+	@Autowired
 	public ChangePasswordService(MemberDao memberDao) {
 		// TODO Auto-generated constructor stub
 		this.memberDao = memberDao;

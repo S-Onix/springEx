@@ -12,7 +12,6 @@ public class MemberInfoPrinter {
 	private MemberDao memberDao;
 	
 	@Autowired
-//	@Qualifier("sysout")
 	private MemberPrinter printer;
 	
 	//아래 구문 생략 가능

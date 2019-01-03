@@ -5,27 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="memberRegSvc" class="spring.MemberRegisterService">
-		<constructor-arg ref="memberDao" />
-	</bean>
+	<bean id="memberRegSvc" class="service.MemberRegisterService">
+<!-- 		<constructor-arg ref="memberDao" />
+ -->	</bean>
 
-	<bean id="changePwdSvc" class="spring.ChangePasswordService">
-		<constructor-arg ref="memberDao" />
-	</bean>
+	<bean id="changePwdSvc" class="service.ChangePasswordService">
+	<!-- 	<constructor-arg ref="memberDao" />
+	 --></bean>
 
-	<bean id="listPrinter" class="spring.MemberListPrinter">
-		<constructor-arg ref="memberDao" />
+	<bean id="listPrinter" class="view.MemberListPrinter">
+<!-- 		<constructor-arg ref="memberDao" />
 		<constructor-arg ref="memberPrinter" />
-	</bean>
+ -->	</bean>
 	
-	<bean id="infoPrinter" class="spring.MemberInfoPrinter">
-		<property name="memberDao" ref="memberDao" />
+	<bean id="infoPrinter" class="view.MemberInfoPrinter">
+<!-- 		<property name="memberDao" ref="memberDao" />
 		<property name="printer" ref="memberPrinter" />
-	</bean>
+ -->	</bean>
 
-  	<bean id="versionPrinter" class="spring.VersionPrinter">
-		<property name="majorVersion" value="4" />
+  	<bean id="versionPrinter" class="view.VersionPrinter">
+ 		<property name="majorVersion" value="4" />
 		<property name="minorVersion" value="1" />
-	</bean>
+ 	</bean>
  
  </beans>
