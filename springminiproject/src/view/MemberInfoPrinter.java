@@ -1,6 +1,7 @@
 package view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import dao.MemberDao;
 import spring.MemberPrinter;
@@ -9,7 +10,9 @@ import vo.Member;
 public class MemberInfoPrinter {
 	@Autowired
 	private MemberDao memberDao;
+	
 	@Autowired
+	@Qualifier("sysout")
 	private MemberPrinter printer;
 	
 	//아래 구문 생략 가능
