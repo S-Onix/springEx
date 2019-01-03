@@ -1,8 +1,7 @@
 package dao;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import vo.Member;
@@ -25,15 +24,19 @@ public class MemberDao {
 	}
 	
 	//맵의 모든 정보 가져오기
-	public ArrayList<Member> selectAll(){
-		ArrayList<Member> members = new ArrayList<>();
-		
-		Iterator<String> i = map.keySet().iterator();
-		while(i.hasNext()) {
-			String key = i.next();
-			members.add(map.get(key));
-		}
-		
-		return members;
+//	public ArrayList<Member> selectAll(){
+//		ArrayList<Member> members = new ArrayList<>();
+//		
+//		Iterator<String> i = map.keySet().iterator();
+//		while(i.hasNext()) {
+//			String key = i.next();
+//			members.add(map.get(key));
+//		}
+//		
+//		return members;
+//	}
+	
+	public Collection<Member> selectAll(){
+		return map.values();
 	}
 }

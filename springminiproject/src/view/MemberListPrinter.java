@@ -1,6 +1,6 @@
 package view;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 import dao.MemberDao;
 import spring.MemberPrinter;
@@ -20,14 +20,27 @@ public class MemberListPrinter {
 	}
 	
 	
+//	public void printAllMemberInfo() {
+//		Collection<Member> members = memberDao.selectAll();
+//		if(members == null) {
+//			System.out.println("데이터 없음");
+//			return;
+//			//throw new MemberNotFoundException(); 예외를 발생시켜도 됨
+//		}
+//		printer.printAll(members);
+//		System.out.println();
+//	}
+	
 	public void printAllMemberInfo() {
-		ArrayList<Member> members = memberDao.selectAll();
+		Collection<Member> members = memberDao.selectAll();
 		if(members == null) {
 			System.out.println("데이터 없음");
 			return;
 			//throw new MemberNotFoundException(); 예외를 발생시켜도 됨
 		}
-		printer.printAll(members);
+		for(Member m : members) {
+			printer.print(m);
+		}
 		System.out.println();
 	}
 }

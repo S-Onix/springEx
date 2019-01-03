@@ -20,7 +20,7 @@ public class Assembler {
 		memberPrinter = new MemberPrinter();
 		regSvc = new MemberRegisterService(memberDao);
 		pwdSvc = new ChangePasswordService(memberDao);
-		memberInfoPrint = new MemberInfoPrinter(memberDao, memberPrinter);
+		memberInfoPrint = new MemberInfoPrinter();
 		memberListPrint = new MemberListPrinter(memberDao, memberPrinter);
 	}
 	
