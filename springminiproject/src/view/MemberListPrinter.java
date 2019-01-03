@@ -2,6 +2,8 @@ package view;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import dao.MemberDao;
 import spring.MemberPrinter;
 import vo.Member;
@@ -14,6 +16,7 @@ public class MemberListPrinter {
 		
 	}
 	
+	@Autowired
 	public MemberListPrinter(MemberDao memberDao, MemberPrinter printer) {
 		this.memberDao = memberDao;
 		this.printer = printer;
