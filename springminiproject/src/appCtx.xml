@@ -15,4 +15,25 @@
 	<bean id="changePwdSvc" class="service.ChangePasswordService">
 		<constructor-arg ref="memberDao" />
 	</bean>
+	
+	<bean id="memberPrinter" class="spring.MemberPrinter"></bean>
+	
+	<bean id="infoPrinter" class="view.MemberInfoPrinter">
+		<property name="memberDao" ref="memberDao" />
+		<property name="printer" ref="memberPrinter" />
+	</bean>
+
+	
+	<bean id="listPrinter" class="view.MemberListPrinter">
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberPrinter"/>
+	</bean>
+	
+	<bean id="versionPrinter" class="view.VersionPrinter">
+		<property name="majorVersion" value="4"/>
+		<property name="minorVersion">
+			<value>1</value>
+		</property>
+	</bean>
+	
 </beans>

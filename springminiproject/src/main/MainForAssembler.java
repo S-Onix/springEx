@@ -40,10 +40,10 @@ public class MainForAssembler {
 			}else if(command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
 				continue;
-			}/*else if(command.startsWith("info ")) {
+			}else if(command.startsWith("info ")) {
 				processInfoCommand(command.split(" "));
 				continue;
-			}else if(command.equals("list")) {
+			}/*else if(command.equals("list")) {
 				processListCommand();
 				continue;
 			}*/
@@ -97,18 +97,19 @@ public class MainForAssembler {
 		
 	}
 	
-//	public static void processInfoCommand(String [] arg) {
-//		if(arg.length != 2) {
-//			printHelp();
-//			return;
-//		}
+	public static void processInfoCommand(String [] arg) {
+		if(arg.length != 2) {
+			printHelp();
+			return;
+		}
 //		MemberInfoPrinter print = assembler.getMemberInfoPrint();
-//		try {
-//			print.printMemberInfo(arg[1]);
-//		}catch(MemberNotFoundException e) {
-//			System.out.println("존재하지 않는 이메일입니다.");
-//		}
-//	}
+		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
+		try {
+			infoPrinter.printMemberInfo(arg[1]);
+		}catch(MemberNotFoundException e) {
+			System.out.println("존재하지 않는 이메일입니다.");
+		}
+	}
 //	
 //	public static void processListCommand() {
 //		MemberListPrinter printAll = assembler.getMemberListPrint();
