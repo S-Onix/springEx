@@ -10,6 +10,11 @@ public class MemberListPrinter {
 	private MemberDao memberDao;
 	private MemberPrinter printer;
 	
+	public MemberListPrinter(MemberDao memberDao, MemberPrinter printer) {
+		this.memberDao = memberDao;
+		this.printer = printer;
+	}
+	
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
@@ -18,7 +23,7 @@ public class MemberListPrinter {
 		this.printer = printer;
 	}
 	
-	public void printAllMemberInfo(String email) {
+	public void printAllMemberInfo() {
 		ArrayList<Member> members = memberDao.selectAll();
 		if(members == null) {
 			System.out.println("데이터 없음");
