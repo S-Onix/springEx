@@ -22,7 +22,10 @@ public class MainForAssembler {
 
 	public static void main(String[] args) throws IOException {
 		// bean º≥¡§¿Ã ∞¥√º»≠µ 
-		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
+//		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
+//		String conf[] = {"classpath:conf1.xml", "classpath:conf2.xml"};
+//		ctx = new GenericXmlApplicationContext(conf);
+		ctx = new GenericXmlApplicationContext("classpath:configImport.xml");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		MainForAssembler main = new MainForAssembler();
 		while (true) {
