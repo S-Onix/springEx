@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.springframework.context.support.GenericXmlApplicationContext;
+
 import assembler.Assembler;
 import miniexception.AlreadyExistingMemberException;
 import miniexception.IdPasswordNotMatchingException;
@@ -15,7 +17,10 @@ import view.MemberListPrinter;
 import vo.RegisterRequest;
 
 public class MainForAssembler {
+	private static GenericXmlApplicationContext ctx;
 	public static void main(String[] args) throws IOException {
+		//bean 설정이 객체화됨
+		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		MainForAssembler main = new MainForAssembler();
 		while (true) {
@@ -35,26 +40,26 @@ public class MainForAssembler {
 			}else if(command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
 				continue;
-			}else if(command.startsWith("print ")) {
-				showUserCommand(command.split(" "));
+			}/*else if(command.startsWith("info ")) {
+				processInfoCommand(command.split(" "));
 				continue;
-			}else if(command.equals("printAll")) {
-				showAllUserCommand();
+			}else if(command.equals("list")) {
+				processListCommand();
 				continue;
-			}
+			}*/
 		
 			printHelp();
 		}
 	}
 
-	private static Assembler assembler = new Assembler();
 	
 	public static void processNewCommand(String[] arg) {
 		if(arg.length != 5) {
 			printHelp();
 			return;
 		}
-		MemberRegisterService regSvc = assembler.getMemberRegisterService();
+//		MemberRegisterService regSvc = assembler.getMemberRegisterService();
+		MemberRegisterService regSvc = ctx.getBean("memberRegSvc", MemberRegisterService.class);
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
 		req.setName(arg[2]);
@@ -79,7 +84,8 @@ public class MainForAssembler {
 			printHelp();
 			return;
 		}
-		ChangePasswordService changePwdSvc = assembler.getChangePasswordService();
+//		ChangePasswordService changePwdSvc = assembler.getChangePasswordService();
+		ChangePasswordService changePwdSvc = ctx.getBean("changePwdSvc", ChangePasswordService.class);
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.");
@@ -91,23 +97,23 @@ public class MainForAssembler {
 		
 	}
 	
-	public static void showUserCommand(String [] arg) {
-		if(arg.length != 2) {
-			printHelp();
-			return;
-		}
-		MemberInfoPrinter print = assembler.getMemberInfoPrint();
-		try {
-			print.printMemberInfo(arg[1]);
-		}catch(MemberNotFoundException e) {
-			System.out.println("존재하지 않는 이메일입니다.");
-		}
-	}
-	
-	public static void showAllUserCommand() {
-		MemberListPrinter printAll = assembler.getMemberListPrint();
-		printAll.printAllMemberInfo();
-	}
+//	public static void processInfoCommand(String [] arg) {
+//		if(arg.length != 2) {
+//			printHelp();
+//			return;
+//		}
+//		MemberInfoPrinter print = assembler.getMemberInfoPrint();
+//		try {
+//			print.printMemberInfo(arg[1]);
+//		}catch(MemberNotFoundException e) {
+//			System.out.println("존재하지 않는 이메일입니다.");
+//		}
+//	}
+//	
+//	public static void processListCommand() {
+//		MemberListPrinter printAll = assembler.getMemberListPrint();
+//		printAll.printAllMemberInfo();
+//	}
 	
 	public static void printHelp() {
 		System.out.println();
@@ -115,8 +121,8 @@ public class MainForAssembler {
 		System.out.println("명령어 사용법 : ");
 		System.out.println("new 이메일 이름 암호 암호확인");
 		System.out.println("change 이메일 현재비번 변경비번");
-		System.out.println("print 이메일");
-		System.out.println("printAll");
+		System.out.println("info 이메일");
+		System.out.println("list");
 		System.out.println();
 		
 	}
