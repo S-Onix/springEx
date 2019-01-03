@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="greeter" class="ex4.Greeter">
-		<property name="format" value="%s, 안녕하세요!" />
+		<property name="format" value="%s, 누구" />
 	</bean>
 
 </beans>
