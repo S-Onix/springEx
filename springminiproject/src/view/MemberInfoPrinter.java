@@ -12,7 +12,7 @@ public class MemberInfoPrinter {
 	private MemberDao memberDao;
 	
 	@Autowired
-	@Qualifier("sysout")
+//	@Qualifier("sysout")
 	private MemberPrinter printer;
 	
 	//아래 구문 생략 가능
@@ -21,10 +21,10 @@ public class MemberInfoPrinter {
 //		this.memberDao = memberDao;
 //	}
 //	
-//	@Autowired
-//	public void setPrinter(MemberPrinter printer) {
-//		this.printer = printer;
-//	}
+	@Autowired
+	public void setPrinter(MemberPrinter printer) {
+		this.printer = printer;
+	}
 	
 	public void printMemberInfo(String email) {
 		Member member = memberDao.selectByEmail(email);

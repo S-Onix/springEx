@@ -22,14 +22,15 @@
 	 -->
 	
 	<!-- 어떻게 객체 주입을 할 것인가? 그리고 어떤것을 객체주입을 할 것인지 확인 -->
-	<bean id="print1" class="spring.MemberPrinter">
-		<qualifier value="sysout"/>
+	<bean id="printer" class="spring.MemberPrinter">
+		<!-- <qualifier value="sysout"/> -->
 	</bean>
 	
-	<bean id="print2" class="spring.MemberPrinter">
+	<bean id="printer2" class="spring.MemberPrinter">
 	</bean>
 	
 	<bean id="infoPrinter" class="view.MemberInfoPrinter">
+		<property name="printer" ref="printer2"></property>
 	</bean>
  
  </beans>
