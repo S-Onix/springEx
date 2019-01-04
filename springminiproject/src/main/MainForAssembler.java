@@ -22,12 +22,8 @@ public class MainForAssembler {
 
 	public static void main(String[] args) throws IOException {
 		// bean 설정이 객체화됨
-//		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
-//		String conf[] = {"classpath:conf1.xml", "classpath:conf2.xml"};
-//		ctx = new GenericXmlApplicationContext(conf);
 		ctx = new GenericXmlApplicationContext("classpath:configImport.xml");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		MainForAssembler main = new MainForAssembler();
 		while (true) {
 			System.out.println("명령어를 입력하세요.");
 			String command = reader.readLine();

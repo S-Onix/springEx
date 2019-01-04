@@ -11,6 +11,7 @@
 	<context:annotation-config />
 
 	<import resource="classpath:conf2.xml" />
+	<import resource="classpath:dbconfig.xml"/>
 
 	<bean id="memberDao" class="dao.MemberDao">
 	</bean>

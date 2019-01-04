@@ -6,22 +6,16 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="memberRegSvc" class="service.MemberRegisterService">
-<!-- 		<constructor-arg ref="memberDao" />
- -->	</bean>
+	</bean>
 
 	<bean id="changePwdSvc" class="service.ChangePasswordService">
-	<!-- 	<constructor-arg ref="memberDao" />
-	 --></bean>
+	</bean>
 
 	<bean id="listPrinter" class="view.MemberListPrinter">
-<!-- 		<constructor-arg ref="memberDao" />
-		<constructor-arg ref="memberPrinter" />
- -->	</bean>
+	</bean>
 	
 	<bean id="infoPrinter" class="view.MemberInfoPrinter">
-<!-- 		<property name="memberDao" ref="memberDao" />
-		<property name="printer" ref="memberPrinter" />
- -->	</bean>
+	</bean>
 
   	<bean id="versionPrinter" class="view.VersionPrinter">
  		<property name="majorVersion" value="4" />

@@ -15,10 +15,10 @@ public class MemberInfoPrinter {
 	private MemberPrinter printer;
 	
 	//아래 구문 생략 가능
-//	@Autowired
-//	public void setMemberDao(MemberDao memberDao) {
-//		this.memberDao = memberDao;
-//	}
+	@Autowired
+	public void setMemberDao(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
 //	
 	@Autowired
 	public void setPrinter(MemberPrinter printer) {
