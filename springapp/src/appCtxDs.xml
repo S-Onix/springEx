@@ -19,4 +19,26 @@
 		<property name="password" value="oracle" />
 	</bean>
 
+	<bean id="memberDao" class="spring.MemberDao">
+	</bean>
+
+	<bean id="changePwdSvc" class="spring.ChangePasswordService">
+	</bean>
+
+	<bean id="memberRegSvc" class="spring.MemberRegisterService">
+	</bean>
+
+	<bean id="memberPrinter" class="spring.MemberPrinter">
+	</bean>
+
+	<bean id="infoPrinter" class="spring.MemberInfoPrinter">
+		<property name="memberDao" ref="memberDao" />
+		<property name="printer" ref="memberPrinter" />
+	</bean>
+
+	<bean id="listPrinter" class="spring.MemberListPrinter">
+		<constructor-arg ref="memberDao" />
+		<constructor-arg ref="memberPrinter" />
+	</bean>
+
 </beans>

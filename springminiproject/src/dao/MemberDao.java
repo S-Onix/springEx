@@ -7,10 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import db.DBAction;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import vo.Member;
 
 public class MemberDao {
+	
+	@Autowired
+	private DataSource dataSource;
 	
 	public Member selectByEmail(String email) {
 		Connection conn = null;
@@ -19,7 +25,7 @@ public class MemberDao {
 		Member member = null;
 		try {
 			String sql = "select * from springuser where email = ?";
-			conn = DBAction.getInstance().getConnection();
+			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
@@ -52,7 +58,7 @@ public class MemberDao {
 		
 		try {
 			String sql = "insert into springuser(email, password, name) values (?,?,?)";
-			conn = DBAction.getInstance().getConnection();
+			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPassword());
@@ -76,7 +82,7 @@ public class MemberDao {
 		
 		try {
 			String sql = "update springuser set password = ? where email = ?";
-			conn = DBAction.getInstance().getConnection();
+			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getPassword());
 			pstmt.setString(2, member.getEmail());
@@ -93,18 +99,6 @@ public class MemberDao {
 		}
 	}
 	
-	//맵의 모든 정보 가져오기
-//	public ArrayList<Member> selectAll(){
-//		ArrayList<Member> members = new ArrayList<>();
-//		
-//		Iterator<String> i = map.keySet().iterator();
-//		while(i.hasNext()) {
-//			String key = i.next();
-//			members.add(map.get(key));
-//		}
-//		
-//		return members;
-//	}
 	
 	public Collection<Member> selectAll(){
 		Collection <Member> members = new ArrayList<>();
@@ -114,7 +108,7 @@ public class MemberDao {
 		
 		try {
 			String sql = "select * from springuser";
-			conn = DBAction.getInstance().getConnection();
+			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

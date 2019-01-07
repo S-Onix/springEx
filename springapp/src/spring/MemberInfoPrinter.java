@@ -12,7 +12,6 @@ public class MemberInfoPrinter {
 	}
 
 	@Autowired
-	/*@Qualifier("sysout")*/
 	public void setPrinter(MemberPrinter printer) {
 		this.printer = printer;
 	}
@@ -20,7 +19,7 @@ public class MemberInfoPrinter {
 	public void printMemberInfo(String email) {
 		Member member = memDao.selectByEmail(email);
 		if (member == null) {
-			System.out.println("ë°ì´í„° ì—†ìŒ\n");
+			System.out.println("µ¥ÀÌÅÍ ¾øÀ½\n");
 			return;
 		}
 		printer.print(member);
