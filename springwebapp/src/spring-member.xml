@@ -15,15 +15,15 @@
 		<property name="user" value="user6" />
 		<property name="password" value="oracle" />
 	</bean>
-	<bean id="memberDao" class="spring.MemberDao">
+	<bean id="memberDao" class="dao.MemberDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
 	
- 	<bean id="memberRegSvc" class="spring.MemberRegisterService">
+ 	<bean id="memberRegSvc" class="service.MemberRegisterService">
 		<constructor-arg ref="memberDao" />
 	</bean>
 
-	<bean id="changePwdSvc" class="spring.ChangePasswordService">
+	<bean id="changePwdSvc" class="service.ChangePasswordService">
 		<constructor-arg ref="memberDao" />
 	</bean>
 
