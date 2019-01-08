@@ -13,6 +13,16 @@
 		<property name="memberRegisterService" ref="memberRegSvc" />
 	</bean>
 	
+	<bean class="controller.ChangePwdController">
+		<property name="changePasswordService" ref="changePwdSvc" />
+	</bean>
+	
+	<bean class="controller.LoginController">
+		<property name="memberLoginService" ref="loginSvc"/>
+	</bean>
+	
+	<bean class="controller.LogoutController"/>
+	
 	<bean class="survey.SurveyController">
 	</bean>
 </beans>
