@@ -23,6 +23,14 @@
 	
 	<bean class="controller.LogoutController"/>
 	
-	<bean class="survey.SurveyController">
+	<bean class="controller.SurveyController">
+	</bean>
+	
+	<bean class="controller.MemberListController">
+		<property name="memberDao" ref="memberDao" />
+	</bean>
+	
+	<bean class="controller.MemberDetailController">
+		<property name="memberDao" ref="memberDao" />
 	</bean>
 </beans>

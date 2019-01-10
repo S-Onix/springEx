@@ -1,4 +1,4 @@
-package survey;
+package vo;
 
 import java.util.List;
 
